@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react";
-import { useContractRead, erc721ABI } from "wagmi";
+import useNFTChecker from "../hooks/useNFTChecker";
 
 const RegularsChecker = ({ address }: { address: string }) => {
-  const { data } = useContractRead({
-    addressOrName: "0x6d0de90cdc47047982238fcf69944555d27ecb25",
-    contractInterface: erc721ABI,
-    functionName: "balanceOf",
-    args: address,
+  const { hasNFT: hasRegulars } = useNFTChecker({
+    contractAddress: "0x6d0de90cdc47047982238fcf69944555d27ecb25",
+    walletAddress: address,
   });
-
-  const [hasRegulars, setHasRegulars] = useState(false);
-
-  useEffect(() => {
-    if (data) {
-      setHasRegulars(data.toNumber() > 0);
-    }
-  }, [data]);
 
   return (
     <div>
