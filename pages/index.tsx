@@ -2,7 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useAccount } from "wagmi";
-import RegularsChecker from "../components/RegularsChecker";
+import JellyBotsChecker from "../components/JellyBotsChecker";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <ConnectButton showBalance={false} chainStatus="none" />
-        {address && <RegularsChecker address={address} />}
+        {address && <JellyBotsChecker address={address} />}
       </main>
     </div>
   );
